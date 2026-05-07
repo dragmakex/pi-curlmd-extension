@@ -2,8 +2,6 @@
 
 A [pi](https://github.com/badlogic/pi-mono) extension that brings [curl.md](https://curl.md) into pi.
 
-It recreates the upstream `@curl.md/pi` plugin as a standalone pi package, in the same lightweight package style as `pi-fff`.
-
 ## What it does
 
 - Registers `read_web_page` to fetch URLs as markdown
@@ -45,8 +43,6 @@ Optional environment variables:
 
 - `CURLMD_API_KEY` - API key for curl.md
 - `CURLMD_BASE_URL` - override curl.md base URL
-
-`npm i -g curl.md` installs the CLI, which is useful, but it does not load the pi extension by itself.
 
 ## Tools
 
