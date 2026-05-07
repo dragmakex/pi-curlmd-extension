@@ -1,0 +1,47 @@
+{
+  "name": "pi-curlmd",
+  "version": "0.1.0",
+  "description": "pi extension: curl.md-powered URL to markdown fetching",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dragmakex/pi-curlmd-extension.git"
+  },
+  "homepage": "https://github.com/dragmakex/pi-curlmd-extension#readme",
+  "bugs": {
+    "url": "https://github.com/dragmakex/pi-curlmd-extension/issues"
+  },
+  "keywords": [
+    "pi",
+    "pi-extension",
+    "pi-package",
+    "curl.md",
+    "markdown",
+    "web",
+    "ai-agent"
+  ],
+  "pi": {
+    "extensions": ["./src/index.ts"]
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "curl.md": "^0.1.1"
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-ai": "*",
+    "@mariozechner/pi-coding-agent": "*",
+    "@mariozechner/pi-tui": "*",
+    "@sinclair/typebox": "*"
+  },
+  "devDependencies": {
+    "@mariozechner/pi-ai": "*",
+    "@mariozechner/pi-coding-agent": "*",
+    "@mariozechner/pi-tui": "*",
+    "@sinclair/typebox": "*",
+    "@types/node": "^24.5.2",
+    "typescript": "^6.0.2"
+  }
+}
