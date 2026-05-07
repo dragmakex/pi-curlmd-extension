@@ -4,8 +4,7 @@ A [pi](https://github.com/badlogic/pi-mono) extension that brings [curl.md](http
 
 ## What it does
 
-- Registers `read_web_page` to fetch URLs as markdown
-- Registers `curl_md` as a compatibility alias
+- Registers `curl_md` to fetch URLs as markdown
 - Adds `/curl_md_login`, `/curl_md_logout`, `/curl_md_org`, and `/curl_md_status`
 - Supports anonymous, API key, and session-based auth
 - Uses curl.md's focused extraction modes (`rush`, `smart`), `objective`, and `keywords`
@@ -13,7 +12,14 @@ A [pi](https://github.com/badlogic/pi-mono) extension that brings [curl.md](http
 ## Install
 
 Requirements:
+- bun
 - pi
+
+### Setup
+
+```bash
+bun install
+```
 
 ### Local package
 
@@ -46,7 +52,7 @@ Optional environment variables:
 
 ## Tools
 
-### `read_web_page`
+### `curl_md`
 
 Fetch a URL as markdown.
 
@@ -56,10 +62,6 @@ Parameters:
 - `keywords` - terms to focus extraction
 - `mode` - `rush` or `smart`
 - `fresh` - bypass cache
-
-### `curl_md`
-
-Alias for `read_web_page`.
 
 ## Commands
 

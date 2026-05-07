@@ -223,7 +223,7 @@ export default function curlMdExtension(pi: ExtensionAPI) {
 			const authHeaders = await resolver();
 			if (!authHeaders) {
 				lines.push("Auth: Not authenticated. Run curl_md_login or set CURLMD_API_KEY.");
-				lines.push("Tool: read_web_page (alias: curl_md)");
+				lines.push("Tool: curl_md");
 				lines.push(`CLI: ${cliDisplay}`);
 				if (baseUrl !== defaultBaseUrl) lines.push(`Base URL: ${baseUrl}`);
 				ctx.ui.notify(lines.join("\n"), "info");
@@ -281,17 +281,17 @@ export default function curlMdExtension(pi: ExtensionAPI) {
 			} else {
 				lines.push(`Auth: ${authType} verification failed. ${status.message}`);
 			}
-			lines.push("Tool: read_web_page (alias: curl_md)");
+			lines.push("Tool: curl_md");
 			lines.push(`CLI: ${cliDisplay}`);
 			if (baseUrl !== defaultBaseUrl) lines.push(`Base URL: ${baseUrl}`);
 			ctx.ui.notify(lines.join("\n"), "info");
 		},
 	});
 
-	const readWebPageTool = defineTool({
+	const curlMdTool = defineTool({
 		description: "Fetch a URL as markdown.",
 		label: "curl.md Fetch",
-		name: "read_web_page",
+		name: "curl_md",
 		parameters: Type.Object({
 			fresh: Type.Optional(
 				Type.Boolean({
@@ -346,7 +346,7 @@ export default function curlMdExtension(pi: ExtensionAPI) {
 			};
 		},
 		promptGuidelines: [
-			"Use read_web_page for docs, changelogs, articles, and other web URLs when you want markdown back.",
+			"Use curl_md for docs, changelogs, articles, and other web URLs when you want markdown back.",
 			"Set objective to the exact question you need answered when only part of the page matters.",
 			"Add keywords for long pages when you know the relevant terms, and choose rush for speed or smart for higher-quality narrowing.",
 		],
@@ -354,7 +354,7 @@ export default function curlMdExtension(pi: ExtensionAPI) {
 			"Fetch a URL as markdown. Use objective for a concrete question, keywords for long pages, rush for speed, smart for better narrowing.",
 		renderCall(args, theme, context) {
 			const text = (context.lastComponent as Text | undefined) ?? new Text("", 0, 0);
-			let content = `${theme.fg("toolTitle", theme.bold("read_web_page"))} ${theme.fg("accent", args.url)}`;
+			let content = `${theme.fg("toolTitle", theme.bold("curl_md"))} ${theme.fg("accent", args.url)}`;
 			if (context.expanded) {
 				const options: string[] = [];
 				if (args.objective) options.push(`objective: ${args.objective}`);
@@ -505,17 +505,7 @@ export default function curlMdExtension(pi: ExtensionAPI) {
 		},
 	});
 
-	pi.registerTool(readWebPageTool);
-	pi.registerTool(
-		defineTool({
-			...readWebPageTool,
-			description: "Alias for read_web_page.",
-			label: "curl.md Fetch (alias)",
-			name: "curl_md",
-			promptGuidelines: ["Prefer read_web_page. curl_md is a compatibility alias."],
-			promptSnippet: "Alias for read_web_page.",
-		}),
-	);
+	pi.registerTool(curlMdTool);
 }
 
 function findCurlMdCli(): string | null {
